@@ -1,14 +1,23 @@
-import { WS2812B_2020 } from "../imports/WS2812B_2020"
-
-export const LedCircuit = () => (
-  <group>
-    <WS2812B_2020
-      name="L1"
-      connections={{
-        VDD: "net.V3V3",
-        GND: "net.GND",
-        DI: "net.GPIO16",
-      }}
-    />
-  </group>
-)
+export const LedCircuit = () => {
+  return (
+    <subcircuit>
+      <chip
+        name="LED"
+        footprint="ws2812b"
+        pinLabels={{
+          VDD: "V5_3",
+          DO: "NC",
+          DI: "RGB_LED_DATA",
+          GND: "GND",
+        }}
+      />
+      <resistor
+        name="LED_RESISTOR"
+        resistance="100"
+        footprint="0402"
+      />
+      <trace from=".LED > .VDD" to=".LED_RESISTOR > .left" />
+      <trace from=".LED_RESISTOR > .right" to="net.V5_3" />
+    </subcircuit>
+  )
+}
