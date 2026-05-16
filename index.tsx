@@ -4,6 +4,7 @@ import { LedCircuit } from "./lib/LedCircuit"
 import { FlashCircuit } from "./lib/FlashCircuit"
 import { CrystalCircuit } from "./lib/CrystalCircuit"
 import { RP2040Circuit } from "./lib/RP2040Circuit"
+import { PinOutCircuit } from "./lib/PinOutCircuit"
 
 export default () => (
   <XiaoBoard variant="rp2040" routingDisabled schMaxTraceDistance={5}>
@@ -12,5 +13,6 @@ export default () => (
     <FlashCircuit />
     <CrystalCircuit />
     <RP2040Circuit />
+    <PinOutCircuit />
   </XiaoBoard>
 )

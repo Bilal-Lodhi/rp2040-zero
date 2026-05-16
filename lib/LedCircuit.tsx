@@ -5,7 +5,7 @@ export const LedCircuit = () => {
         name="LED"
         footprint="ws2812b"
         pinLabels={{
-          VDD: "V5_3",
+          VDD: "V3_3",
           DO: "NC",
           DI: "RGB_LED_DATA",
           GND: "GND",
@@ -13,11 +13,13 @@ export const LedCircuit = () => {
       />
       <resistor
         name="LED_RESISTOR"
-        resistance="100"
+        resistance="330"
         footprint="0402"
       />
-      <trace from=".LED > .VDD" to=".LED_RESISTOR > .left" />
-      <trace from=".LED_RESISTOR > .right" to="net.V5_3" />
+      <trace from=".LED > .GND" to="net.GND" />
+      <trace from=".LED > .VDD" to="net.V3_3" />
+      <trace from=".LED > .DI" to=".LED_RESISTOR > .left" />
+      <trace from=".LED_RESISTOR > .right" to="net.GPIO16" />
     </subcircuit>
   )
 }
